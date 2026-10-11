@@ -2,7 +2,7 @@
 * { box-sizing: border-box; }
 body { margin: 0; }
 button, input { font: inherit; }
-button:focus, input:focus, a:focus { outline: none; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #4a6cf7; outline-offset: 2px; }
 .topbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem max(1.25rem, calc((100% - 70rem) / 2)); background: #16192a; color: white; }
 .brand { font-size: 1.35rem; font-weight: 800; cursor: pointer; }
 .menu { display: flex; gap: 1.25rem; }
@@ -11,14 +11,18 @@ button:focus, input:focus, a:focus { outline: none; }
 .intro { color: #626779; }
 .search { width: min(28rem, 100%); padding: .8rem 1rem; border: 1px solid #b9bcc7; border-radius: .5rem; margin: 1rem 0 2rem; }
 .film-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem; }
-.film-card { position: relative; overflow: hidden; border-radius: .8rem; background: white; box-shadow: 0 4px 18px #23263a1c; cursor: pointer; }
+.film-card { position: relative; border-radius: .8rem; background: white; box-shadow: 0 4px 18px #23263a1c; }
+.film-card:focus-visible { outline: 3px solid #4a6cf7; outline-offset: 2px; }
+.film-select { display: block; width: 100%; padding: 0; border: 0; background: transparent; text-align: left; cursor: pointer; color: inherit; }
 .film-card img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-.film-content { position: relative; padding: 1rem; }
-.film-content h4 { margin: 0 2.5rem .35rem 0; font-size: 1.15rem; }
-.film-content p { margin: 0; color: #686c79; }
-.availability { position: absolute; top: -1.1rem; right: 1rem; width: 1rem; height: 1rem; border: 3px solid white; border-radius: 50%; }
-.available { background: #35a45f; }
-.unavailable { background: #d44343; }
+.film-overlay { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: #16192acc; color: white; font-weight: 700; opacity: 0; transition: opacity .15s ease; pointer-events: none; }
+.film-card:hover .film-overlay, .film-card:focus-within .film-overlay { opacity: 1; }
+.film-content { position: relative; display: block; padding: 1rem; }
+.film-title { display: block; margin: 0 2.5rem .35rem 0; font-size: 1.15rem; font-weight: 700; }
+.film-meta { display: block; margin: 0; color: #686c79; }
+.seats { display: block; margin-top: .35rem; font-weight: 600; }
+.seats.seats-available { color: #1f7a44; }
+.seats.seats-full { color: #b02a2a; }
 .favorite { position: absolute; top: .65rem; right: .75rem; border: 0; background: transparent; color: #9b7200; font-size: 1.55rem; cursor: pointer; }
 .selection { margin-top: 2rem; padding: 1rem; background: #e1e7ff; border-radius: .5rem; }
 
